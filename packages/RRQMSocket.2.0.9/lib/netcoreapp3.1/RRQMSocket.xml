@@ -2049,6 +2049,18 @@
             触发当前方法的实例(在多线程模式时，如不实现线程同步，该对象可能发生错误)
             </summary>
         </member>
+        <member name="M:RRQMSocket.RPC.ServerProvider.RPCEnter(RRQMSocket.RPC.MethodItem)">
+            <summary>
+            RPC即将进入时
+            </summary>
+            <param name="methodItem"></param>
+        </member>
+        <member name="M:RRQMSocket.RPC.ServerProvider.RPCLeave(RRQMSocket.RPC.MethodItem)">
+            <summary>
+            RPC方法执行完成
+            </summary>
+            <param name="methodItem"></param>
+        </member>
         <member name="T:RRQMSocket.RPC.RPCProtocolType">
             <summary>
             RPC协议
@@ -2538,11 +2550,11 @@
             序列化生成器
             </summary>
         </member>
-        <member name="M:RRQMSocket.RPC.RPCClient.Connect(RRQMSocket.ConnectSetting)">
+        <member name="M:RRQMSocket.RPC.RPCClient.InitializeRPC(System.Int32)">
             <summary>
-            连接服务器
+            连接初始化
             </summary>
-            <param name="setting"></param>
+            <param name="waitTime"></param>
         </member>
         <member name="M:RRQMSocket.RPC.RPCClient.GetRPCReferencedAssemblies(System.String,System.Int32)">
             <summary>

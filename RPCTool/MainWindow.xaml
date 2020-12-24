@@ -9,7 +9,7 @@
                      Width="500"
                      Height="300"
                      DataContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}"
-                     TitleContent="RPCTool"
+                     TitleContent="RPCTool" FontSize="16"
                      mc:Ignorable="d">
     <rrqmskin:RRQMWindow.Resources>
         <Style x:Key="LoadingStyle" TargetType="{x:Type rrqmskin:Loading}">
@@ -44,7 +44,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
@@ -54,7 +54,7 @@
         <TextBlock VerticalAlignment="Center" Text="目标文件夹：" />
         <rrqmskin:InputBox Grid.Column="1" Grid.ColumnSpan="4" VerticalAlignment="Center"
                            Text="{Binding DirPath}" />
-        <rrqmskin:CorrugatedButton Grid.Column="5" Width="70" Height="20" VerticalAlignment="Center"
+        <rrqmskin:CorrugatedButton Grid.Column="5" Width="70" Height="30" VerticalAlignment="Center"
                                    Command="{Binding SelectDirCommand}"
                                    Content="选择" />
 
@@ -68,7 +68,7 @@
                           IsLoading="{Binding IsLoading}"
                           Style="{DynamicResource LoadingStyle}" />
       
-        <rrqmskin:CorrugatedButton Grid.Row="1" Grid.Column="5" Width="60" Height="30" Margin="5,0"
+        <rrqmskin:CorrugatedButton Grid.Row="1" Grid.Column="5" Width="70" Height="30" Margin="5,0"
                                    HorizontalAlignment="Center"
                                    Command="{Binding GetInfoCommand}"
                                    Content="下载" />
