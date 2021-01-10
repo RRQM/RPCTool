@@ -34,17 +34,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RRQMMVVM, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RRQMMVVM.2.0.2\lib\net45\RRQMMVVM.dll</HintPath>
+    <Reference Include="RRQMMVVM, Version=2.0.3.0, Culture=neutral, PublicKeyToken=1691c0176f5d64c0, processorArchitecture=MSIL">
+      <HintPath>..\packages\RRQMMVVM.2.0.3\lib\net45\RRQMMVVM.dll</HintPath>
     </Reference>
-    <Reference Include="RRQMSkin, Version=2.0.3.0, Culture=neutral, PublicKeyToken=1691c0176f5d64c0, processorArchitecture=MSIL">
-      <HintPath>..\packages\RRQMSkin.2.0.3\lib\net45\RRQMSkin.dll</HintPath>
+    <Reference Include="RRQMSkin, Version=2.0.6.0, Culture=neutral, PublicKeyToken=1691c0176f5d64c0, processorArchitecture=MSIL">
+      <HintPath>..\packages\RRQMSkin.2.0.6\lib\net45\RRQMSkin.dll</HintPath>
     </Reference>
-    <Reference Include="RRQMSocket, Version=2.0.9.0, Culture=neutral, PublicKeyToken=a9db37c9b0783a15, processorArchitecture=MSIL">
-      <HintPath>..\packages\RRQMSocket.2.0.9\lib\net45\RRQMSocket.dll</HintPath>
+    <Reference Include="RRQMSocket, Version=2.0.13.0, Culture=neutral, PublicKeyToken=a9db37c9b0783a15, processorArchitecture=MSIL">
+      <HintPath>..\packages\RRQMSocket.2.0.13\lib\net45\RRQMSocket.dll</HintPath>
     </Reference>
-    <Reference Include="RRQMXml, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a9db37c9b0783a15, processorArchitecture=MSIL">
-      <HintPath>..\packages\RRQMXml.2.0.0\lib\net45\RRQMXml.dll</HintPath>
+    <Reference Include="RRQMXml, Version=2.0.1.0, Culture=neutral, PublicKeyToken=a9db37c9b0783a15, processorArchitecture=MSIL">
+      <HintPath>..\packages\RRQMXml.2.0.1\lib\net45\RRQMXml.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -87,6 +87,8 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

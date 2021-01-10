@@ -16,7 +16,7 @@ namespace RPCTool
         private static readonly string path = "App.Config";
         public void Save()
         {
-            RRQMXml.XmlTool.SerializeToXmlFile(path, typeof(AppConfig), this);
+            RRQMXml.XmlTool.SerializeToXmlFile(path,this);
         }
 
         public static AppConfig Read()
@@ -25,7 +25,7 @@ namespace RPCTool
             {
                 try
                 {
-                    return (AppConfig)RRQMXml.XmlTool.DeserializeFromXmlFile(path, typeof(AppConfig));
+                    return RRQMXml.XmlTool.DeserializeFromXmlFile<AppConfig>(path);
                 }
                 catch (Exception)
                 {

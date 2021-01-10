@@ -1,16 +1,14 @@
-﻿using RRQMMVVM;
-using RRQMSocket.RPC;
-using System;
+﻿using System;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
+using RRQMMVVM;
+using RRQMSocket.RPC;
 
 namespace RPCTool
 {
     public class MainViewModel : ViewModelBase
     {
-
         public MainViewModel()
         {
             this.logString = new StringBuilder();
@@ -25,15 +23,17 @@ namespace RPCTool
         }
 
         #region 变量
-        private AppConfig appConfig;
-        #endregion
 
+        private AppConfig appConfig;
+
+        #endregion 变量
 
         #region Command
+
         public ExecuteCommand SelectDirCommand { get; set; }
         public ExecuteCommand GetInfoCommand { get; set; }
-        #endregion
 
+        #endregion Command
 
         #region 属性
 
@@ -70,15 +70,12 @@ namespace RPCTool
             get { return logString.ToString(); }
         }
 
+        #endregion 属性
 
-        #endregion
-
-
-        #region 公共方法
-        #endregion
 
 
         #region 绑定方法
+
         private void SelectDir()
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
@@ -90,7 +87,6 @@ namespace RPCTool
                     return;
                 }
                 this.DirPath = dialog.SelectedPath;
-           
             }
         }
 
@@ -114,13 +110,9 @@ namespace RPCTool
                 {
                     this.IsLoading = false;
                 }
-                
             });
-
-
         }
 
-       
         private void Go(Action action)
         {
             Task.Run(action);
@@ -131,11 +123,7 @@ namespace RPCTool
             this.logString.AppendLine(mes);
             OnPropertyChanged("LogString");
         }
-        #endregion
 
-
-        #region 事件方法
-        #endregion
-
+        #endregion 绑定方法
     }
 }
