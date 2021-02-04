@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,7 +16,21 @@ namespace RPCTool
             this.logString = new StringBuilder();
             this.SelectDirCommand = new ExecuteCommand(SelectDir);
             this.GetInfoCommand = new ExecuteCommand(GetInfo);
+            this.OutFileCommand = new ExecuteCommand(OutFile);
+            this.OutCodeCommand = new ExecuteCommand(OutCode);
             this.appConfig = AppConfig.Read();
+
+            this.OpenDirCommand = new ExecuteCommand(()=> 
+            {
+                if (Directory.Exists(this.DirPath))
+                {
+                    Process.Start(this.DirPath);
+                }
+                else
+                {
+                    Log("文件路径不存在");
+                }         
+            });
         }
 
         ~MainViewModel()
@@ -31,7 +47,10 @@ namespace RPCTool
         #region Command
 
         public ExecuteCommand SelectDirCommand { get; set; }
+        public ExecuteCommand OpenDirCommand { get; set; }
         public ExecuteCommand GetInfoCommand { get; set; }
+        public ExecuteCommand OutFileCommand { get; set; }
+        public ExecuteCommand OutCodeCommand { get; set; }
 
         #endregion Command
 
@@ -72,8 +91,6 @@ namespace RPCTool
 
         #endregion 属性
 
-
-
         #region 绑定方法
 
         private void SelectDir()
@@ -89,7 +106,8 @@ namespace RPCTool
                 this.DirPath = dialog.SelectedPath;
             }
         }
-
+        RPCProxyInfo proxyInfo;
+        RPCClient client;
         private void GetInfo()
         {
             this.IsLoading = true;
@@ -97,10 +115,12 @@ namespace RPCTool
             {
                 try
                 {
-                    RPCClient client = new RPCClient();
+                    client = new RPCClient();
                     client.Connect(new RRQMSocket.ConnectSetting() { TargetIP = this.IP, TargetPort = this.Port });
-                    client.GetRPCReferencedAssemblies(this.DirPath);
-                    Log("完成下载");
+                    client.GetProxyInfo(out proxyInfo,5);
+                    Log("获取到信息：");
+                    Log($"RPC版本号：{proxyInfo.Version}");
+                    Log($"RPC开放源代码：{(proxyInfo.Codes==null?false:true)}");
                 }
                 catch (Exception e)
                 {
@@ -108,6 +128,8 @@ namespace RPCTool
                 }
                 finally
                 {
+                    client.Dispose();
+                    client = null;
                     this.IsLoading = false;
                 }
             });
@@ -123,7 +145,50 @@ namespace RPCTool
             this.logString.AppendLine(mes);
             OnPropertyChanged("LogString");
         }
+        private void OutFile()
+        {
+            if (this.proxyInfo==null)
+            {
+                return;
+            }
+            try
+            {
+                File.WriteAllBytes(Path.Combine(this.DirPath,this.proxyInfo.AssemblyName),this.proxyInfo.AssemblyData);
+                Log("导出成功");
+            }
+            catch (Exception e)
+            {
+                Log(e.Message);
+            }
+        }
+        
+        private void OutCode()
+        {
+            if (this.proxyInfo == null)
+            {
+                return;
+            }
+            try
+            {
+                if (this.proxyInfo.Codes==null)
+                {
+                    Log("未开放源代码");
+                    return;
+                }
 
+                File.Delete(Path.Combine(this.DirPath, "Code.txt"));
+                foreach (var item in this.proxyInfo.Codes)
+                {
+                    File.AppendAllText(Path.Combine(this.DirPath, "Code.txt"), item+"\r\n\r\n");
+                }
+                
+                Log("导出成功");
+            }
+            catch (Exception e)
+            {
+                Log(e.Message);
+            }
+        }
         #endregion 绑定方法
     }
 }

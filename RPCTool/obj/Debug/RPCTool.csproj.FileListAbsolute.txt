@@ -27,7 +27,6 @@ E:\CodeOpen\RPCTool\RPCTool\bin\Debug\RRQMSocket.dll
 E:\CodeOpen\RPCTool\RPCTool\bin\Debug\RRQMXml.dll
 E:\CodeOpen\RPCTool\RPCTool\bin\Debug\RRQMSocket.xml
 E:\CodeOpen\RPCTool\RPCTool\bin\Debug\RRQMXml.xml
-E:\CodeOpen\RPCTool\RPCTool\obj\Debug\RPCTool.csprojAssemblyReference.cache
 E:\CodeOpen\RPCTool\RPCTool\obj\Debug\MainWindow.g.cs
 E:\CodeOpen\RPCTool\RPCTool\obj\Debug\App.g.cs
 E:\CodeOpen\RPCTool\RPCTool\obj\Debug\GeneratedInternalTypeHelper.g.cs
@@ -60,3 +59,6 @@ D:\OpenCode\RPCTool\RPCTool\obj\Debug\MainWindow.baml
 D:\OpenCode\RPCTool\RPCTool\obj\Debug\RPCTool.g.resources
 D:\OpenCode\RPCTool\RPCTool\obj\Debug\RPCTool.csproj.CoreCompileInputs.cache
 D:\OpenCode\RPCTool\RPCTool\obj\Debug\RPCTool.csproj.CopyComplete
+E:\CodeOpen\RPCTool\RPCTool\bin\Debug\RRQMCore.dll
+E:\CodeOpen\RPCTool\RPCTool\bin\Debug\RRQMCore.xml
+E:\CodeOpen\RPCTool\RPCTool\obj\Debug\RPCTool.csprojAssemblyReference.cache
